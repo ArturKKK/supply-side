@@ -165,9 +165,10 @@ def build(c):
             if r[key] is not None and base[horizon] is not None:
                 r["baseline_cagr"] = base[horizon]
                 r["excess_cagr"] = r[key] - base[horizon]
+                r["excess_horizon"] = {"c1": "1y", "c2": "2y", "c3": "3y"}[horizon]
                 break
         else:
-            r["baseline_cagr"] = r["excess_cagr"] = None
+            r["baseline_cagr"] = r["excess_cagr"] = r["excess_horizon"] = None
 
     # lag_score: thin shelf relative to turnover + price that has lagged the
     # cohort line, ranked inside each class so cases are not compared to stickers.
@@ -190,10 +191,10 @@ def build(c):
     c.executemany("""INSERT INTO metrics(name,class,source_capsule,release_year,status,
         status_detail,price_now,listings_now,volume_30d,price_1y,price_2y,price_3y,
         cagr_1y,cagr_2y,cagr_3y,cagr,supply_trend,supply_basis,months_supply,
-        vol_trend_1y,baseline_cagr,excess_cagr,lag_score,confidence,as_of)
+        vol_trend_1y,baseline_cagr,excess_cagr,excess_horizon,lag_score,confidence,as_of)
         VALUES(:name,:cls,:cap,:rel_year,:status,:detail,:price_now,:listings_now,
         :volume_30d,:p1,:p2,:p3,:c1,:c2,:c3,:cagr,:supply_trend,:supply_basis,
-        :months,:vt,:baseline_cagr,:excess_cagr,:lag_score,:confidence,:as_of)""", rows)
+        :months,:vt,:baseline_cagr,:excess_cagr,:excess_horizon,:lag_score,:confidence,:as_of)""", rows)
     c.commit()
     return rows
 
@@ -202,7 +203,7 @@ CSV_COLS = ["name", "class", "source_capsule", "release_year", "status", "price_
             "listings_now", "volume_30d", "price_1y", "price_2y", "price_3y", "cagr",
             "supply_trend", "confidence", "cagr_1y", "cagr_2y", "cagr_3y",
             "months_supply", "vol_trend_1y", "baseline_cagr", "excess_cagr",
-            "lag_score", "as_of", "supply_basis", "status_detail"]
+            "excess_horizon", "lag_score", "as_of", "supply_basis", "status_detail"]
 
 
 def export_csv(c, path="/root/projects/supply-side/supply_map.csv"):

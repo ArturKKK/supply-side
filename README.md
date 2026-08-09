@@ -43,16 +43,34 @@ otherwise works around the limit.
 ## Pipeline
 
 ```
-./.venv/bin/python db.py                  # create schema
-./.venv/bin/python step1_inventory.py     # containers + stickers per capsule facet
-./.venv/bin/python status_load.py         # per-source drop-pool claims
-./.venv/bin/python step2_fetch.py overview 200
-./.venv/bin/python step2_fetch.py history 200   # needs steam_cookie.txt, else skipped
-./.venv/bin/python metrics.py             # derived columns + supply_map.csv
-./.venv/bin/python report.py              # counts + top-30
+./.venv/bin/python db.py               # create schema
+gunzip -c supply.db.gz > supply.db     # or start empty
+
+# needs Steam (blocked whenever it is answering 429):
+./.venv/bin/python step1_inventory.py  # containers + stickers per capsule facet
+./.venv/bin/python step2_fetch.py 200  # priceoverview -> 24h volume
+./.venv/bin/python snapshot.py         # daily sell_listings; cron runs this at 03:17
+
+# needs no Steam at all:
+./.venv/bin/python primary_sources.py  # Valve's own update feed + grep
+./.venv/bin/python archive_names.py    # 359k market_hash_names from the CDX index
+./.venv/bin/python external_history.py "Operation Bravo Case" ...   # archived line1
+./.venv/bin/python status_load.py      # per-source drop-pool claims
+./.venv/bin/python ratepool_test.py 2026-01-09 2025-11-15           # DiD + placebo
+./.venv/bin/python metrics.py          # derived columns + supply_map.csv
+./.venv/bin/python report.py           # coverage, disagreements, ranked table
 ```
 
 Every step is resumable; re-running continues from `run_meta` / existing rows.
+
+## The benchmark
+
+The placebo test showed fixed-supply legacy items outrun still-dropping ones in
+almost any quarter, so "did it beat the market" is the wrong bar. `baseline_cagr`
+is the median CAGR of legacy (non-active-drop) cases at the matched horizon, and
+`excess_cagr` is the item minus that line — negative means the price has lagged
+its own cohort. `excess_horizon` records which horizon the comparison used, since
+items too young for 3 years of history are compared on a shorter, weaker line.
 
 ## supply_trend
 

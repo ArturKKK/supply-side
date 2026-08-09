@@ -18,9 +18,21 @@ def main():
     print("COLLECTED")
     print("=" * 100)
     tot = q("SELECT COUNT(*) FROM items").fetchone()[0]
-    print(f"items in inventory: {tot}")
+    print(f"Steam inventory pass (sell_listings):   {tot} items")
+    if tot == 0:
+        print("  ^ blocked: Steam has been answering 429 on every market endpoint.")
+        print("    Everything below is archive-derived and needs no Steam access.")
     for cls, n in q("SELECT class,COUNT(*) FROM items GROUP BY class ORDER BY 2 DESC"):
         print(f"  {cls:18s} {n}")
+    try:
+        an = q("SELECT COUNT(*) FROM archive_names").fetchone()[0]
+        print(f"archive name universe (no Steam needed): {an} market_hash_names")
+    except Exception:
+        pass
+    print(f"items in the map:                       "
+          f"{q('SELECT COUNT(*) FROM metrics').fetchone()[0]}")
+    for cls, n in q("SELECT class,COUNT(*) FROM metrics GROUP BY class ORDER BY 2 DESC"):
+        print(f"  {cls or '?':18s} {n}")
 
     print("\nmarket data coverage")
     for label, sql in [

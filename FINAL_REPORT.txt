@@ -1,0 +1,84 @@
+====================================================================================================
+COLLECTED
+====================================================================================================
+Steam inventory pass (sell_listings):   0 items
+  ^ blocked: Steam has been answering 429 on every market endpoint.
+    Everything below is archive-derived and needs no Steam access.
+archive name universe (no Steam needed): 359749 market_hash_names
+items in the map:                       124
+  capsule            84
+  case               38
+  container_other    2
+
+market data coverage
+  with listings snapshot   0
+  with 24h volume          0
+  with any daily history   124
+  with >=3y history        86
+  with >=2y history        96
+  with >=1y history        107
+  with supply_trend        0
+
+status
+  unknown            81
+  discontinued       19
+  disputed           16
+  active_drop        5
+  purchase_only      3
+
+SOURCE DISAGREEMENTS (16) -- not resolved, shown as-is
+  Chroma 3 Case                    sources disagree: steam_guide_2981848978=discontinued; steamdb_droppool=rare_pool
+  Clutch Case                      sources disagree: steam_guide_2981848978=discontinued; steamdb_droppool=rare_pool
+  Danger Zone Case                 sources disagree: steam_guide_2981848978=discontinued; steamdb_droppool=rare_pool
+  Fever Case                       sources disagree: steam_guide_2981848978=purchase_only; steamdb_droppool=active_drop
+  Fracture Case                    sources disagree: steam_guide_2981848978=discontinued; steamdb_droppool=active_drop
+  Gallery Case                     sources disagree: steam_guide_2981848978=purchase_only; steamdb_droppool=armory_exchange
+  Gamma 2 Case                     sources disagree: steam_guide_2981848978=discontinued; steamdb_droppool=rare_pool
+  Glove Case                       sources disagree: steam_guide_2981848978=discontinued; steamdb_droppool=rare_pool
+  Horizon Case                     sources disagree: steam_guide_2981848978=discontinued; steamdb_droppool=rare_pool
+  Operation Wildfire Case          sources disagree: steam_guide_2981848978=discontinued; steamdb_droppool=rare_pool
+  Prisma 2 Case                    sources disagree: steam_guide_2981848978=discontinued; steamdb_droppool=rare_pool
+  Prisma Case                      sources disagree: steam_guide_2981848978=discontinued; steamdb_droppool=rare_pool
+  Recoil Case                      sources disagree: steam_guide_2981848978=discontinued; steamdb_droppool=active_drop
+  Shadow Case                      sources disagree: steam_guide_2981848978=discontinued; steamdb_droppool=rare_pool
+  Snakebite Case                   sources disagree: steam_guide_2981848978=discontinued; steamdb_droppool=rare_pool
+  Spectrum 2 Case                  sources disagree: steam_guide_2981848978=discontinued; steamdb_droppool=rare_pool
+
+============================================================================================================
+TOP-30: supply drying up + price still behind the fixed-supply cohort line
+benchmark = median CAGR of legacy (non-active-drop) cases; excess is measured against that, not against the market
+============================================================================================================
+  # name                               class    status           price  listings    vol30d  turnover     cagr   excess  supply
+------------------------------------------------------------------------------------------------------------------------------
+  1 Paris 2023 Contenders Autograph Ca capsule  unknown           0.13         -     60585    -45.7%   -28.0%   -87.4%       -
+  2 Paris 2023 Contenders Sticker Caps capsule  unknown           0.12         -    726114    -33.4%   -31.8%   -91.2%       -
+  3 Community Sticker Capsule 1        capsule  discontinued      3.76         -      2149    -57.2%   -20.1%   -58.9%       -
+  4 Chicken Capsule                    capsule  unknown           1.09         -       174    -75.4%    -0.7%   -39.6%       -
+  5 Halo Capsule                       capsule  unknown           1.12         -      1452    -72.5%    +0.9%   -38.0%       -
+  6 Krakow 2017 Challengers Autograph  capsule  unknown          32.54         -       125    -52.3%   -18.1%   -57.0%       -
+  7 2021 Community Sticker Capsule     capsule  unknown           0.97         -       574    -62.3%    -6.5%   -45.4%       -
+  8 Espionage Sticker Capsule          capsule  unknown           0.89         -      1975    -53.5%    +8.4%   -51.0%       -
+  9 Warhammer 40,000 Sticker Capsule   capsule  unknown           1.09         -       518    -58.3%    -0.2%   -39.1%       -
+ 10 Boston 2018 Returning Challengers  capsule  unknown          17.85         -       211    -54.2%    -4.0%   -42.9%       -
+ 11 Antwerp 2022 Challengers Sticker C capsule  unknown           0.42         -     16147    -52.8%    -4.0%   -42.9%       -
+ 12 Paris 2023 Challengers Autograph C capsule  unknown           0.18         -     60768     -9.8%   -25.4%   -84.7%       -
+ 13 Copenhagen 2024 Legends Autograph  capsule  unknown           0.46         -      7898    -61.4%   +11.5%   -28.6%       -
+ 14 Krakow 2017 Legends Autograph Caps capsule  unknown          33.72         -        93    -44.3%    -5.1%   -44.0%       -
+ 15 Paris 2023 Challengers Sticker Cap capsule  unknown           0.12         -    370306     +2.2%   -29.1%   -88.5%       -
+ 16 Rio 2022 Legends Sticker Capsule   capsule  unknown           0.30         -     18682    -30.1%   -17.4%   -56.2%       -
+ 17 Paris 2023 Legends Autograph Capsu capsule  unknown           0.19         -     55717    -11.6%   -14.7%   -74.1%       -
+ 18 Shanghai 2024 Legends Autograph Ca capsule  unknown           0.32         -     42447    -44.6%    +1.5%   -38.6%       -
+ 19 CS:GO Weapon Case                  case     discontinued    206.95         -       896    -75.6%   +31.9%    -7.0%       -
+ 20 Antwerp 2022 Contenders Sticker Ca capsule  unknown           0.78         -     21528    -61.8%   +19.4%   -19.4%       -
+ 21 Rio 2022 Challengers Sticker Capsu capsule  unknown           0.32         -     35499    -48.6%    +7.5%   -31.3%       -
+ 22 Fracture Case                      case     disputed          1.01         -   1469177    -55.9%   +16.1%   -22.8%       -
+ 23 Recoil Case                        case     disputed          0.63         -   2113531    -29.1%    -9.9%   -48.8%       -
+ 24 The Boardroom Sticker Capsule      capsule  unknown           1.09         -       684    -32.6%    -2.0%   -40.9%       -
+ 25 Paris 2023 Champions Autograph Cap capsule  unknown           0.24         -     24867    -13.3%    +0.3%   -59.1%       -
+ 26 Paris 2023 Legends Sticker Capsule capsule  unknown           0.15         -    659106     +3.5%   -15.5%   -74.9%       -
+ 27 Fever Case                         case     disputed          0.95         -   5930751    +24.6%   -55.1%   -95.1%       -
+ 28 Copenhagen 2024 Contenders Autogra capsule  unknown           0.25         -     11643    -49.2%   +19.8%   -20.2%       -
+ 29 Half-Life: Alyx Collectible Pins C capsule  unknown          11.38         -        50    -31.5%    +1.0%   -37.9%       -
+ 30 Operation Bravo Case               case     discontinued     69.14         -      2360    -45.2%   +16.2%   -22.7%       -
+
+  listings/supply blank = Steam inventory pass has not run yet (429 lockout); turnover is the archive-derived stand-in.
