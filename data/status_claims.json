@@ -1,0 +1,125 @@
+{
+  "_note": "Verbatim claims per source. Nothing merged, nothing resolved. Each source keeps its own page-stated freshness date. Extracted 2026-08-09 via WebFetch; provenance is the URL, not this file.",
+  "sources": [
+    {
+      "id": "steamdb_droppool",
+      "url": "https://steamdb.com/en/skins/cs2/drop-pool",
+      "page_updated_claim": "Updated Jul 2, 2026",
+      "fetched": "2026-08-09",
+      "rare_pool_exists": true,
+      "rare_pool_size_claim": 35,
+      "quote": "Cases in the active pool drop at full rate; cases that rotate out join the rare pool and keep dropping at a much lower rate.",
+      "active": ["Fever Case", "Kilowatt Case", "Revolution Case", "Recoil Case",
+                 "Dreams & Nightmares Case", "Fracture Case"],
+      "armory_exchange": ["Gallery Case"],
+      "rare_pool_partial": ["Danger Zone Case", "Clutch Case", "Prisma Case", "Prisma 2 Case",
+                            "Snakebite Case", "Spectrum 2 Case", "Gamma 2 Case", "Glove Case",
+                            "Horizon Case", "Chroma 3 Case", "Operation Wildfire Case",
+                            "Shadow Case"],
+      "discontinued": []
+    },
+    {
+      "id": "steam_guide_2981848978",
+      "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=2981848978",
+      "page_updated_claim": "4 Apr @ 5:49am (2026)",
+      "fetched": "2026-08-09",
+      "rare_pool_exists": false,
+      "rare_pool_size_claim": 0,
+      "quote": "Rare Drop Pool (RDP) - 0 Containers. Currently empty.",
+      "active": ["Sealed Dead Hand Terminal", "Sealed Genesis Terminal", "Kilowatt Case",
+                 "Revolution Case", "Dreams & Nightmares Case"],
+      "purchase_only": ["Fever Case", "Gallery Case", "Operation Riptide Case",
+                        "Operation Broken Fang Case", "Shattered Web Case"],
+      "rare_pool_partial": [],
+      "discontinued": ["Recoil Case", "Snakebite Case", "Fracture Case", "Prisma 2 Case",
+                       "CS20 Case", "Prisma Case", "Danger Zone Case", "Horizon Case",
+                       "Clutch Case", "Spectrum 2 Case", "Operation Hydra Case",
+                       "Spectrum Case", "Glove Case", "Gamma 2 Case", "Gamma Case",
+                       "Chroma 3 Case", "Operation Wildfire Case", "Revolver Case",
+                       "Shadow Case", "Falchion Case", "Chroma 2 Case", "Chroma Case",
+                       "Operation Vanguard Weapon Case", "Operation Breakout Weapon Case",
+                       "Community Sticker Capsule 1", "Huntsman Weapon Case",
+                       "Sticker Capsule 2", "Operation Phoenix Weapon Case",
+                       "CS:GO Weapon Case 3", "Sticker Capsule",
+                       "Winter Offensive Weapon Case", "CS:GO Weapon Case 2",
+                       "Operation Bravo Case", "CS:GO Weapon Case"]
+    },
+    {
+      "id": "tradeit_droppool",
+      "url": "https://tradeit.gg/blog/cs2-drop-pool/",
+      "page_updated_claim": "May 27, 2026",
+      "fetched": "2026-08-09",
+      "rare_pool_exists": null,
+      "rare_pool_size_claim": null,
+      "quote": "Older case appearances are much less common or may no longer be part of the normal weekly rotation, depending on Valve's active pool at that time.",
+      "active": ["Dead Hand Terminal", "Sealed Genesis Terminal", "Kilowatt Case",
+                 "Revolution Case", "Dreams & Nightmares Case"],
+      "rare_pool_partial": [],
+      "discontinued": [],
+      "collections_removed_jan2026": ["Safehouse", "Dust 2", "2018 Nuke", "2018 Inferno"]
+    },
+    {
+      "id": "skinland_rarepool",
+      "url": "https://skin.land/blog/cs2-rare-drop-pool-explained/",
+      "page_updated_claim": "2026",
+      "fetched": "2026-08-09",
+      "rare_pool_exists": false,
+      "rare_pool_size_claim": 0,
+      "quote": "Sometime around January 8-9, 2026, the rare pool simply stopped producing results.",
+      "active": [], "rare_pool_partial": [], "discontinued": []
+    },
+    {
+      "id": "csgocom_dataminer",
+      "url": "https://csgo.com/news/137305-data-miner-valve-disable-rare-case-drops-in-cs2",
+      "page_updated_claim": "2026",
+      "fetched": "2026-08-09",
+      "rare_pool_exists": false,
+      "rare_pool_size_claim": 0,
+      "quote": "Data-miner: Valve disable rare case drops in CS2. Community data trackers showed exactly 0 rare case drops after January 8-9, 2026. Valve has not made any official statement.",
+      "active": [], "rare_pool_partial": [], "discontinued": []
+    }
+  ],
+  "primary_source": {
+    "id": "valve_cs2_news_feed",
+    "url": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=730",
+    "local_copy": "data/valve_cs2_news.json",
+    "checked": "2026-08-09",
+    "coverage": "500 posts, 2022-03-02 .. 2026-08-03",
+    "method": "full-text grep of every post for rare / drop pool / no longer drop / removed <case|container>",
+    "finding": "Valve has never announced removing cases from the drop pool, and has never used the term 'rare drop pool'. The only January 2026 drop-list change in the official feed is about weapon COLLECTIONS, not cases."
+  },
+  "structural_events": [
+    {
+      "event": "weapon_collections_removed_from_weekly_care_package",
+      "status": "CONFIRMED_PRIMARY",
+      "date": "2026-01-21",
+      "source": "valve_cs2_news_feed, post 'Counter-Strike 2 Update' 2026-01-21",
+      "verbatim": "Added two all-new weapon collections to the Weekly Care Package drop list: Harlequin, Achroma. Removed four weapon collections from the Weekly Care Package drop list: Safehouse, Dust 2, 2018 Nuke Collection, and the 2018 Inferno Collection",
+      "added": ["The Harlequin Collection", "The Achroma Collection"],
+      "removed": ["The Safehouse Collection", "The Dust 2 Collection",
+                  "The 2018 Nuke Collection", "The 2018 Inferno Collection"],
+      "note": "these are weapon-skin collections, NOT cases. Affects skin supply, not case supply."
+    },
+    {
+      "event": "rare_case_drop_pool_disabled",
+      "status": "UNCONFIRMED_RUMOR",
+      "date_claim": "2026-01-08/09",
+      "announced_by_valve": false,
+      "primary_source_check": "absent from Valve's entire 500-post feed 2022-2026",
+      "secondary_sources_for": ["skinland_rarepool", "csgocom_dataminer",
+                                "steam_guide_2981848978", "cs2central.gg", "key-drop.com"],
+      "secondary_sources_against": ["steamdb_droppool"],
+      "why_the_agreement_is_weak": "the sources_for are skin-trading SEO sites that republish each other; agreement between them is not independent corroboration. steamdb_droppool is the higher-quality source and disagrees.",
+      "date_discrepancy": "rumour says 2026-01-08/09; the only real January drop-list change Valve shipped was 2026-01-21 and concerned weapon collections. The rumour may be a mis-telling of that change.",
+      "market_effect_claim": "rare case prices +20-40% (claimed by secondary sources, not verified here)",
+      "resolution_path": "mechanical: sell_listings of legacy cases should flatten/fall after the break date while active-pool cases keep rising. Our own daily snapshots (snapshot.py, from 2026-08-09) will settle it forward; retroactive test needs an external listings-history source.",
+      "do_not_use_for_conclusions": true
+    }
+  ],
+  "unresolved_disagreements": [
+    "Does a rare drop pool still exist? steamdb_droppool: yes (35 cases at reduced rate). steam_guide_2981848978 / skinland_rarepool / csgocom_dataminer: no, disabled ~2026-01-08. tradeit_droppool: does not say. 4 sources against 1; steamdb_droppool is the outlier and its wording may describe the pre-January mechanic.",
+    "Fever Case: steamdb_droppool = active drop; steam_guide_2981848978 = purchase-only.",
+    "Recoil Case / Fracture Case: steamdb_droppool = active drop; steam_guide_2981848978 = discontinued.",
+    "Sealed Dead Hand Terminal / Sealed Genesis Terminal: active per steam_guide and tradeit; absent from steamdb active list."
+  ]
+}

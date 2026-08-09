@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+steam_cookie.txt
+supply.db-wal
+supply.db-shm
+logs_*.txt
+# host infrastructure, not this project's business -- never publish
+data/crontab.backup.*
