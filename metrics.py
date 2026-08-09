@@ -204,7 +204,9 @@ CSV_COLS = ["name", "class", "source_capsule", "release_year", "status", "price_
             "supply_trend", "confidence", "cagr_1y", "cagr_2y", "cagr_3y",
             "months_supply", "vol_trend_1y", "baseline_cagr", "excess_cagr",
             "excess_horizon", "lag_score", "as_of", "tournament", "tour_year",
-            "age_years", "variant", "liquidity", "supply_basis", "status_detail"]
+            "age_years", "variant", "steam_liquidity", "offsteam_listings",
+            "offsteam_median", "offsteam_censored", "price_ratio_off_steam",
+            "supply_basis", "status_detail"]
 
 
 def export_csv(c, path="/root/projects/supply-side/supply_map.csv"):
@@ -216,11 +218,39 @@ def export_csv(c, path="/root/projects/supply-side/supply_map.csv"):
     return path
 
 
+def attach_offsteam(c):
+    """Copy the freshest off-Steam reading onto metrics. Kept as its own columns:
+    Steam volume is a monthly flow, off-Steam listings are a standing stock, and
+    collapsing the two into one "liquidity" number hides which venue an item
+    actually trades on."""
+    for col, typ in (("offsteam_listings", "INTEGER"), ("offsteam_median", "REAL"),
+                     ("offsteam_censored", "INTEGER"), ("price_ratio_off_steam", "REAL")):
+        try:
+            c.execute(f"ALTER TABLE metrics ADD COLUMN {col} {typ}")
+        except Exception:
+            pass
+    n = 0
+    for name, l, mdp, cen in c.execute(
+            """SELECT name,listings,median_price,censored FROM offsteam o
+               WHERE source='lis' AND ts=(SELECT MAX(ts) FROM offsteam
+                                          WHERE name=o.name AND source='lis')"""):
+        c.execute("""UPDATE metrics SET offsteam_listings=?, offsteam_median=?,
+                     offsteam_censored=?,
+                     price_ratio_off_steam=CASE WHEN price_now>0 AND ?>0
+                                                THEN ?/price_now END
+                     WHERE name=?""", (l, mdp, cen, mdp, mdp, name))
+        n += 1
+    c.commit()
+    return n
+
+
 if __name__ == "__main__":
     import lifecycle
     c = db.connect()
     rows = build(c)
     n_t, n = lifecycle.annotate(c)          # tournament / age / liquidity / variant
+    n_off = attach_offsteam(c)
     p = export_csv(c)
-    print(f"metrics rows: {len(rows)} ({n_t} with a tournament in the name) -> {p}")
+    print(f"metrics rows: {len(rows)} ({n_t} with a tournament, "
+          f"{n_off} with an off-Steam reading) -> {p}")
     c.close()
