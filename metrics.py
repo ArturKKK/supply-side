@@ -203,7 +203,8 @@ CSV_COLS = ["name", "class", "source_capsule", "release_year", "status", "price_
             "listings_now", "volume_30d", "price_1y", "price_2y", "price_3y", "cagr",
             "supply_trend", "confidence", "cagr_1y", "cagr_2y", "cagr_3y",
             "months_supply", "vol_trend_1y", "baseline_cagr", "excess_cagr",
-            "excess_horizon", "lag_score", "as_of", "supply_basis", "status_detail"]
+            "excess_horizon", "lag_score", "as_of", "tournament", "tour_year",
+            "age_years", "variant", "liquidity", "supply_basis", "status_detail"]
 
 
 def export_csv(c, path="/root/projects/supply-side/supply_map.csv"):
@@ -216,8 +217,10 @@ def export_csv(c, path="/root/projects/supply-side/supply_map.csv"):
 
 
 if __name__ == "__main__":
+    import lifecycle
     c = db.connect()
     rows = build(c)
+    n_t, n = lifecycle.annotate(c)          # tournament / age / liquidity / variant
     p = export_csv(c)
-    print(f"metrics rows: {len(rows)} -> {p}")
+    print(f"metrics rows: {len(rows)} ({n_t} with a tournament in the name) -> {p}")
     c.close()

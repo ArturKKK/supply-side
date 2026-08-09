@@ -1,0 +1,4 @@
+35 * * * * /home/trader/invest/deploy/update_orderbook_depth.sh >> /home/trader/invest/logs/orderbook_depth.log 2>&1
+0 1,7,13,19 * * * /opt/graphcast-weather/cron_forecast.sh >> /var/log/graphcast-forecast.log 2>&1
+0 8 * * * cd /opt/vulpes && ./.venv/bin/python scripts/tradeit_summary.py >> /opt/vulpes/tradeit_summary.log 2>&1
+17 3 * * * cd /root/projects/supply-side && ./.venv/bin/python -u snapshot.py >> /root/projects/supply-side/logs_snapshot.txt 2>&1
